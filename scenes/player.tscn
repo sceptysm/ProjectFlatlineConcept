@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://de8ry6oipbfme"]
+
+[ext_resource type="Script" path="res://scripts/Marker2D.gd" id="1_cescu"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ty05b"]
+[ext_resource type="Texture2D" uid="uid://c3juo84hrlarr" path="res://sprites/player_placeholder.png" id="2_lprts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84aye"]
+size = Vector2(124, 140)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(0, -1)
+rotation = -1.57079
+script = ExtResource("1_ty05b")
+metadata/_edit_horizontal_guides_ = [-77.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_84aye")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+rotation = 0.297628
+script = ExtResource("1_cescu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(-0.5, -1.19209e-06)
+rotation = -0.297117
+scale = Vector2(0.831081, 1.12)
+texture = ExtResource("2_lprts")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(62, -5.00039)
