@@ -40,9 +40,16 @@ func _process(delta):
 				actor.rotation = actor.global_position.direction_to(player.global_position).angle()
 				actor.direction = actor.global_position.direction_to(player.global_position)
 				actor.velocity = actor.direction * actor.speed
+				var distanceToPlayer = actor.global_position.distance_to(player.global_position)
 				
-				if actor.global_position.distance_to(player.global_position) >= 310:
+				if distanceToPlayer >= 1000:
+					player = null
+					set_state(State.PATROL)
+					return
+				
+				if distanceToPlayer >= 310:
 					actor.move_and_slide()
+				
 					
 				if shootDelay >= 75:
 					actor.shoot()
