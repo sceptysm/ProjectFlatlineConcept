@@ -31,6 +31,7 @@ func shoot():
 	owner.add_child(b)
 	b.transform = $Muzzle.global_transform
 	
+	
 
 
 	

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7g7tga8q1do6"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_53rep"]
+[ext_resource type="Texture2D" uid="uid://c3juo84hrlarr" path="res://sprites/player_placeholder.png" id="2_2jhev"]
+[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_78dwo"]
+[ext_resource type="Script" path="res://scripts/AI.gd" id="3_l4f0x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6kt0"]
+radius = 41.1096
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2krn"]
+radius = 707.515
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_53rep")
+Bullet = ExtResource("2_78dwo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+texture = ExtResource("2_2jhev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(0.750841, 0.67778)
+shape = SubResource("CircleShape2D_r6kt0")
+
+[node name="AI" type="Node2D" parent="." groups=["enemy"]]
+script = ExtResource("3_l4f0x")
+
+[node name="DetectionZone" type="Area2D" parent="AI"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="AI/DetectionZone"]
+shape = SubResource("CircleShape2D_l2krn")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(87, -1)
+scale = Vector2(2.98514, -2.52632)
+
+[connection signal="body_entered" from="AI/DetectionZone" to="AI" method="_on_detection_zone_body_entered"]

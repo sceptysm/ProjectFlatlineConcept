@@ -1,20 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://de8ry6oipbfme"]
+[gd_scene load_steps=6 format=3 uid="uid://de8ry6oipbfme"]
 
 [ext_resource type="Script" path="res://scripts/Marker2D.gd" id="1_cescu"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ty05b"]
+[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_i8isr"]
 [ext_resource type="Texture2D" uid="uid://c3juo84hrlarr" path="res://sprites/player_placeholder.png" id="2_lprts"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_84aye"]
-size = Vector2(124, 140)
+[sub_resource type="CircleShape2D" id="CircleShape2D_643oe"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -1)
 rotation = -1.57079
+scale = Vector2(0.943439, 0.781171)
 script = ExtResource("1_ty05b")
+Bullet = ExtResource("2_i8isr")
 metadata/_edit_horizontal_guides_ = [-77.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_84aye")
+position = Vector2(-13.4299, 0.819136)
+scale = Vector2(3.00587, 3.66987)
+shape = SubResource("CircleShape2D_643oe")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 rotation = 0.297628
@@ -23,8 +27,9 @@ script = ExtResource("1_cescu")
 [node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
 position = Vector2(-0.5, -1.19209e-06)
 rotation = -0.297117
-scale = Vector2(0.831081, 1.12)
+scale = Vector2(1, 1.348)
 texture = ExtResource("2_lprts")
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(62, -5.00039)
+scale = Vector2(2.20532, 2.64658)

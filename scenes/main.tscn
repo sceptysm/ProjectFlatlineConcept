@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bp5u2ifbhvij5" path="res://sprites/tilemap.png" id="1_t4g47"]
 [ext_resource type="PackedScene" uid="uid://de8ry6oipbfme" path="res://scenes/player.tscn" id="2_t7jci"]
-[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="3_1yhm7"]
+[ext_resource type="PackedScene" uid="uid://c7g7tga8q1do6" path="res://scenes/enemy.tscn" id="4_cnl38"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iyp3c"]
 texture = ExtResource("1_t4g47")
@@ -551,7 +551,9 @@ layer_0/tile_data = PackedInt32Array(-1, 65536, 1, -65536, 65536, 1, -131072, 65
 
 [node name="player" parent="." instance=ExtResource("2_t7jci")]
 position = Vector2(-38, 18)
-Bullet = ExtResource("3_1yhm7")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(-1, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("4_cnl38")]
+position = Vector2(838, -22)
