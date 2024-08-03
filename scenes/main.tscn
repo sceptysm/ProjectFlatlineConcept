@@ -565,7 +565,6 @@ rotation = -1.57079
 scale = Vector2(0.943439, 0.781171)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPos"]
-scale = Vector2(1, 1)
 process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://de8ry6oipbfme"]
+[gd_scene load_steps=9 format=3 uid="uid://de8ry6oipbfme"]
 
 [ext_resource type="Script" path="res://scripts/Marker2D.gd" id="1_cescu"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ty05b"]
 [ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_i8isr"]
 [ext_resource type="Texture2D" uid="uid://c3juo84hrlarr" path="res://sprites/player_placeholder.png" id="2_lprts"]
 [ext_resource type="Script" path="res://scripts/Health.gd" id="5_rn5x0"]
+[ext_resource type="Script" path="res://scenes/Weapon.gd" id="6_bg2kv"]
+[ext_resource type="Resource" uid="uid://c7jrhve8k01tt" path="res://resources/assault_rifle.tres" id="7_5y1lo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_643oe"]
 
@@ -31,9 +33,13 @@ rotation = -0.297117
 scale = Vector2(1, 1.348)
 texture = ExtResource("2_lprts")
 
-[node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(62, -5.00039)
-scale = Vector2(2.20532, 2.64658)
-
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("5_rn5x0")
+
+[node name="Weapon" type="Node2D" parent="."]
+script = ExtResource("6_bg2kv")
+WEAPON_TYPE = ExtResource("7_5y1lo")
+
+[node name="Muzzle" type="Marker2D" parent="Weapon"]
+position = Vector2(59.9716, -6.00647)
+scale = Vector2(2.20532, 2.64658)
