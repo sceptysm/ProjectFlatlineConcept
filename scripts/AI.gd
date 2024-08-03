@@ -7,10 +7,12 @@ enum State {
 	PATROL, ENGAGE
 }
 
-@onready var currentState = State.PATROL 
+@onready var currentState = State.PATROL
+@onready var shootDelay = $ShootCooldown
+
 var player : CharacterBody2D = null
 var actor : CharacterBody2D = null
-var shootDelay = 0
+
 
 signal state_changed(newState)
 
@@ -31,7 +33,7 @@ func initialize(actor):
 
 
 func _process(delta):
-	shootDelay += 1
+
 	match currentState:
 		State.PATROL:
 			pass
@@ -51,9 +53,10 @@ func _process(delta):
 					actor.move_and_slide()
 				
 					
-				if shootDelay >= 75:
+				if shootDelay.is_stopped():
 					actor.shoot()
-					shootDelay = 0
+					shootDelay.start()
+
 				
 				
 			pass

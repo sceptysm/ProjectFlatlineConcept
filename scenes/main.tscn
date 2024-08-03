@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://8bs1s12vmvek"]
+[gd_scene load_steps=7 format=3 uid="uid://8bs1s12vmvek"]
 
 [ext_resource type="Texture2D" uid="uid://bp5u2ifbhvij5" path="res://sprites/tilemap.png" id="1_t4g47"]
 [ext_resource type="PackedScene" uid="uid://de8ry6oipbfme" path="res://scenes/player.tscn" id="2_t7jci"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_r4h68"]
 [ext_resource type="PackedScene" uid="uid://c7g7tga8q1do6" path="res://scenes/enemy.tscn" id="4_cnl38"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iyp3c"]
@@ -552,8 +553,21 @@ layer_0/tile_data = PackedInt32Array(-1, 65536, 1, -65536, 65536, 1, -131072, 65
 [node name="player" parent="." instance=ExtResource("2_t7jci")]
 position = Vector2(-38, 18)
 
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(-1, 0)
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
+remote_path = NodePath("../../PlayerPos")
 
 [node name="Enemy" parent="." instance=ExtResource("4_cnl38")]
 position = Vector2(838, -22)
+
+[node name="PlayerPos" type="Node2D" parent="."]
+position = Vector2(-38, 18)
+rotation = -1.57079
+scale = Vector2(0.943439, 0.781171)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerPos"]
+scale = Vector2(1, 1)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("3_r4h68")
