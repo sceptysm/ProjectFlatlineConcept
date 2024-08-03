@@ -18,7 +18,9 @@ func load_weapon():
 	projectile = WEAPON_TYPE.projectile
 	weaponName = WEAPON_TYPE.name
 	
-#interface shooting
+# Find a way to interface shooting
+# A way to do it might be to possible create an extension script
+# for the weapon script that overrides this function while utilising the resource.
 func shoot():
 	var b = projectile.instantiate()
 	owner.owner.add_child(b)
