@@ -5,8 +5,6 @@ extends CharacterBody2D
 @onready var ai = $AI
 @onready var health = $Health
 
-
-
 var direction : Vector2 = Vector2()
 var speed : float = 400.0
 
@@ -21,11 +19,9 @@ func shoot():
 func _physics_process(delta):
 	pass
 
-	
 func handle_hit(damage: int):
-	
+			
 	health.set_health(health.get_health() - damage)
 	
 	if health.get_health() <= 0:
-		queue_free() 
-
+		queue_free()

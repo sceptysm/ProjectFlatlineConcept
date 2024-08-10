@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmn2jwvenr7uq"]
+
+[ext_resource type="Script" path="res://scripts/HealthBar.gd" id="1_nei5v"]
+
+[node name="HUD" type="Node2D"]
+
+[node name="Display" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="Display"]
+offset_left = 40.0
+offset_top = 640.0
+offset_right = 192.0
+offset_bottom = 680.0
+script = ExtResource("1_nei5v")

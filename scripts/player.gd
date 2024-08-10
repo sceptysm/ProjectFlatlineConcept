@@ -13,12 +13,12 @@ var lookDirection : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var speed : float = 800.0
 
+signal healthChanged(value: int)
 
 # read input from the player
 func read_input():
 	direction = Input.get_vector("left", "right", "up", "down")
 
-	
 	velocity = direction * speed
 	move_and_slide()
 
@@ -39,6 +39,8 @@ func _process(delta):
 	
 func handle_hit(damage: int):
 	health.set_health(health.get_health() - damage)
+	
+	emit_signal("healthChanged", health.get_health())
 	
 	if health.get_health() <= 0:
 		queue_free()
