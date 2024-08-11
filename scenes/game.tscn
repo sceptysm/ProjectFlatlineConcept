@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c7g7tga8q1do6" path="res://scenes/enemy.tscn" id="3_0ys5a"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="4_2umlw"]
 [ext_resource type="PackedScene" uid="uid://cmn2jwvenr7uq" path="res://scenes/hud.tscn" id="6_wq75r"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="7_nyrj6"]
+[ext_resource type="PackedScene" uid="uid://c4o1h3j1eb4sy" path="res://scenes/game_over_screen.tscn" id="7_4upqy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iyp3c"]
 texture = ExtResource("1_j51qk")
@@ -578,6 +578,13 @@ script = ExtResource("4_2umlw")
 
 [node name="HUD" parent="." instance=ExtResource("6_wq75r")]
 position = Vector2(696, -288)
-script = ExtResource("7_nyrj6")
 
+[node name="Game Over Screen" parent="." instance=ExtResource("7_4upqy")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="death" from="player" to="." method="_on_player_death"]
 [connection signal="healthChanged" from="player" to="HUD" method="_on_player_health_changed"]

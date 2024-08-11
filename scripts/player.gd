@@ -14,6 +14,7 @@ var direction : Vector2 = Vector2()
 var speed : float = 800.0
 
 signal healthChanged(value: int)
+signal death
 
 # read input from the player
 func read_input():
@@ -35,15 +36,16 @@ func _physics_process(delta):
 func _process(delta):
 	if (Input.is_action_just_pressed("shoot")):
 		weapon.shoot()
-		
-	
+
 func handle_hit(damage: int):
 	health.set_health(health.get_health() - damage)
 	
 	emit_signal("healthChanged", health.get_health())
 	
 	if health.get_health() <= 0:
-		queue_free()
+		game_over()
 		
-
+func game_over():
+	death.emit()
+	queue_free()
 	

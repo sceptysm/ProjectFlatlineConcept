@@ -1,18 +1,15 @@
 extends Node2D
 
 @onready var hud = $HUD
+@onready var game_over_screen = $"Game Over Screen"
 
 func _ready():
-	show_hud(true)  # Show the HUD when the game starts
+	hud.show_HUD()
+	game_over_screen.hide_game_over()
 
-func show_hud(visible: bool):
-	hud.visible = visible
+func _on_player_death():
+	hud.hide_HUD()
+	game_over_screen.show_game_over()
 
-func _on_some_event():
-	# Attatch function to some event to hide HUD
-	# e.g. on player death
-	show_hud(false)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4o1h3j1eb4sy"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_6qlpn"]
+
+[sub_resource type="FontFile" id="FontFile_m6n0d"]
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/64/0/kerning_overrides/64/0 = Vector2(0, 0)
+cache/0/64/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/64/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_67y1t"]
+font = SubResource("FontFile_m6n0d")
+font_size = 64
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Game Over Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6qlpn")
+
+[node name="Display" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Display"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 0.121569, 0.12549, 0.2)
+
+[node name="Label" type="Label" parent="Display/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.256
+anchor_right = 0.65
+anchor_bottom = 0.389
+offset_left = -3.05176e-05
+offset_top = -0.320007
+offset_right = -6.10352e-05
+offset_bottom = -0.0800171
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_67y1t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="Display/ColorRect"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 304.0
+offset_right = 736.0
+offset_bottom = 368.0
+text = "Retry Level
+"
+
+[node name="Back to Menu" type="Button" parent="Display/ColorRect"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 384.0
+offset_right = 736.0
+offset_bottom = 448.0
+text = "Main Menu
+"
+
+[connection signal="pressed" from="Display/ColorRect/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Display/ColorRect/Back to Menu" to="." method="_on_back_to_menu_pressed"]
