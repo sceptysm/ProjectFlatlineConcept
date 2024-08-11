@@ -19,12 +19,16 @@ signal death
 # read input from the player
 func read_input():
 	direction = Input.get_vector("left", "right", "up", "down")
-
+	if Input.is_action_pressed("walk"):
+		speed = lerp(speed, 400.0, 0.5)
+	else:
+		speed = lerp(speed, 800.0, 0.5)
+	
 	velocity = direction * speed
 	move_and_slide()
 
 # process the input from the player
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	var distance_to_mouse = position.distance_to(get_global_mouse_position())
 
@@ -33,10 +37,12 @@ func _physics_process(delta):
 	
 	read_input()
 	
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_just_pressed("shoot")):
 		weapon.shoot()
 
+		
+	
 func handle_hit(damage: int):
 	health.set_health(health.get_health() - damage)
 	

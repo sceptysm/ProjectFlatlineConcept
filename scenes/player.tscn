@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_i8isr"]
 [ext_resource type="Texture2D" uid="uid://c3juo84hrlarr" path="res://sprites/player_placeholder.png" id="2_lprts"]
 [ext_resource type="Script" path="res://scripts/Health.gd" id="5_rn5x0"]
-[ext_resource type="Script" path="res://scenes/Weapon.gd" id="6_bg2kv"]
+[ext_resource type="Script" path="res://scripts/Weapon.gd" id="6_kvld7"]
 [ext_resource type="Resource" uid="uid://c7jrhve8k01tt" path="res://resources/assault_rifle.tres" id="7_5y1lo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_643oe"]
@@ -37,7 +37,7 @@ texture = ExtResource("2_lprts")
 script = ExtResource("5_rn5x0")
 
 [node name="Weapon" type="Node2D" parent="."]
-script = ExtResource("6_bg2kv")
+script = ExtResource("6_kvld7")
 WEAPON_TYPE = ExtResource("7_5y1lo")
 
 [node name="Muzzle" type="Marker2D" parent="Weapon"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://gnr2ojv8bvw2"]
+
+[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_ye860"]
+
+[sub_resource type="GDScript" id="GDScript_5pors"]
+script/source = "extends Wpn
+
+@onready var muzzle = $Muzzle
+
+func shoot():
+	print(main)
+	var b = projectile.instantiate()
+	main.add_child(b)
+	print(muzzle)
+
+	#b.transform = muzzle.get_global_transform()
+	
+"
+
+[node name="assault_rifle" type="Node2D"]
+script = SubResource("GDScript_5pors")
+projectile = ExtResource("2_ye860")
+weaponName = &"AR"
+damage = 20
+attackType = "projectile"
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(59.9716, -6.00647)
+scale = Vector2(2.20532, 2.64658)
