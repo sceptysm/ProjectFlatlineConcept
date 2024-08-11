@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpay2n8b4o1td"]
+
+[ext_resource type="Script" path="res://scripts/attack_arc.gd" id="1_g6va1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b320r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ij7h8"]
+
+[node name="AttackArc" type="Area2D"]
+script = ExtResource("1_g6va1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(91.1971, -34.6625)
+texture = SubResource("PlaceholderTexture2D_b320r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4.26731, 2.74124)
+skew = -0.567232
+shape = SubResource("CircleShape2D_ij7h8")
+
+[node name="HitboxLifetime" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
