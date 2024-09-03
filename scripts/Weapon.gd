@@ -1,14 +1,14 @@
 extends Node2D
 
-@export var WEAPON_TYPE : Weapons:
-	set(value):
-		WEAPON_TYPE = value
-		load_weapon()
-		
+
 @onready var damage : int
 @onready var projectile : PackedScene
-@onready var muzzle : Node2D = $Muzzle
+#@onready var muzzle : Node2D = $Muzzle # Change later to weapon scene based muzzle
 @onready var weaponName : StringName
+
+@onready var weaponPacked : PackedScene = preload("res://scenes/weapons/assault_rifle.tscn") #?? get rid of this ? 
+
+var weapon_instance : WeaponAbstract = null
 
 # --------------------
 # WEAPON NODE TEST
@@ -16,37 +16,60 @@ extends Node2D
 
 
 func _ready():
-	load_weapon()
-
-
-func load_weapon():
-	damage = WEAPON_TYPE.damage
-	projectile = WEAPON_TYPE.projectile
-	weaponName = WEAPON_TYPE.name
+	load_weapon_entry(weaponPacked)
 	
-# Find a way to interface shooting
-# A way to do it might be to possible create an extension script
-# for the weapon script that overrides this function while utilising the resource.
+	
+
+func load_weapon_entry(weaponScene):
+	var instance = weaponScene.instantiate()
+	damage = instance.damage
+	projectile = instance.projectile
+	weaponName = instance.weaponName
+
+	#assign weapon to player
+	weapon_instance = instance
+	add_child(instance)
+	weapon_instance.set_is_dropped(false)
+
+func load_weapon(instance):
+
+	damage = instance.damage
+	projectile = instance.projectile
+	weaponName = instance.weaponName
+
+	
+	instance.set_is_dropped(false)
+	
+	var weapon_parent = instance.get_parent()
+	if (weapon_parent):
+		instance.get_parent().remove_child(instance)
+	
+	add_child(instance)
+	instance.transform = transform
+	weapon_instance = instance
+	
+	
+
+func drop_weapon():
+	if (weapon_instance):
+		weapon_instance.reparent(get_tree().get_root())
+		weapon_instance.global_position = self.global_position
+		weapon_instance = null
+	
+	
+
+func pick_up_weapon(weapon_to_pickup : WeaponAbstract):
+	if (weapon_instance):
+		drop_weapon()
+	
+	load_weapon(weapon_to_pickup)	
+
+
+
+
 func shoot():	
-	var b = projectile.instantiate()
-	owner.owner.add_child(b)
-	b.transform = muzzle.get_global_transform()
-	
-#	if (weaponName == "Shottie"):
-#
-#		for angle in [-170, 170]:
-#			var radians = deg_to_rad(angle)
-#			var bullet = projectile.instantiate()
-#			owner.owner.add_child(bullet)
-#			bullet.transform = muzzle.get_global_transform()
-#			bullet.rotate(angle)
-#			#bullet.global_position = self.global_position
-		
-	
+	if (weapon_instance != null):
+		weapon_instance.shoot()
+
 func _physics_process(delta):
-	if Input.is_action_just_pressed("cycle_weapon"):
-		
-		if weaponName == "AR":
-			WEAPON_TYPE = load("res://resources/shotgun.tres")
-		else:
-			WEAPON_TYPE = load("res://resources/assault_rifle.tres")
+	pass 

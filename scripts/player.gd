@@ -13,6 +13,8 @@ var lookDirection : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var speed : float = 800.0
 
+var weapon_to_pick_up : WeaponAbstract
+
 signal healthChanged(value: int)
 signal death
 
@@ -38,8 +40,20 @@ func _physics_process(_delta):
 	read_input()
 	
 func _process(_delta):
+	if (Input.is_action_just_pressed("use")):
+		print("here")
+		if (weapon_to_pick_up):
+			print(weapon_to_pick_up)
+			weapon.pick_up_weapon(weapon_to_pick_up)
+			pass
+
 	if (Input.is_action_just_pressed("shoot")):
 		weapon.shoot()
+		
+	if (Input.is_action_just_pressed("drop_weapon")):
+		weapon.drop_weapon()
+	
+
 
 		
 	
