@@ -1,32 +1,33 @@
 [gd_scene load_steps=5 format=3 uid="uid://gnr2ojv8bvw2"]
 
 [ext_resource type="Script" path="res://scripts/weapons/assault_rifle.gd" id="1_xjf0n"]
-[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_ye860"]
-[ext_resource type="Texture2D" uid="uid://cud7s8f0sdb56" path="res://sprites/player2d.png" id="3_bwhoy"]
+[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/projectiles/bullet.tscn" id="2_q5dhx"]
+[ext_resource type="Texture2D" uid="uid://dmixvtm6v6tp" path="res://sprites/assault_rifle.png" id="3_wnqk2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2tb7b"]
-radius = 26.0
+radius = 40.0
 
 [node name="assault_rifle" type="Node2D"]
 script = ExtResource("1_xjf0n")
-projectile = ExtResource("2_ye860")
+projectile = ExtResource("2_q5dhx")
 weaponName = &"AR"
 damage = 20
 attackType = "Projectile"
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(59.9716, -6.00647)
+position = Vector2(96, -16)
 scale = Vector2(2.20532, 2.64658)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -2.38419e-07)
-scale = Vector2(0.177419, 0.164894)
-texture = ExtResource("3_bwhoy")
 
 [node name="Pick Up Area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pick Up Area"]
+position = Vector2(40, 0)
 shape = SubResource("CircleShape2D_2tb7b")
+
+[node name="AssaultRifle" type="Sprite2D" parent="."]
+position = Vector2(48, -5.68434e-14)
+scale = Vector2(0.369532, 0.31957)
+texture = ExtResource("3_wnqk2")
 
 [connection signal="body_entered" from="Pick Up Area" to="." method="_on_weapon_area_entered"]
 [connection signal="body_exited" from="Pick Up Area" to="." method="_on_weapon_are_exited"]

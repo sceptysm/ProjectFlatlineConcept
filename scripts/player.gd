@@ -41,7 +41,6 @@ func _physics_process(_delta):
 	
 func _process(_delta):
 	if (Input.is_action_just_pressed("use")):
-		print("here")
 		if (weapon_to_pick_up):
 			print(weapon_to_pick_up)
 			weapon.pick_up_weapon(weapon_to_pick_up)

@@ -15,16 +15,15 @@ func _ready() -> void:
 
 func set_is_dropped(val):
 	is_dropped = val
-
+	
 func shoot():
 	push_error("WeaponAbstract: shoot() not implemented")
-
+	
+func alt_fire():
+	push_error("WeaponAbstract: alt_fire() not implemented")
 
 func _on_weapon_area_entered(body: Node2D) -> void:
 	push_error("WeaponAbstract: _on_weapon_area_entered() not implemented")
 
-
-
-
 func _on_weapon_are_exited(body: Node2D) -> void:
-	push_error("WeaponAbstract: _on_weapon_area_entered() not implemented")
+	push_error("WeaponAbstract: _on_weapon_area_exited() not implemented")

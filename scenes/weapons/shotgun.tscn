@@ -1,31 +1,33 @@
 [gd_scene load_steps=5 format=3 uid="uid://tup3x0e28lgb"]
 
 [ext_resource type="Script" path="res://scripts/weapons/shotgun.gd" id="1_5w330"]
-[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_c2r4r"]
-[ext_resource type="Texture2D" uid="uid://bqgcfxx770dta" path="res://sprites/crosshair.png" id="3_7voht"]
+[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/projectiles/bullet.tscn" id="2_y2vo4"]
+[ext_resource type="Texture2D" uid="uid://ch75axlffwccy" path="res://sprites/shotgun.png" id="3_rxebh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2tb7b"]
-radius = 26.0
+radius = 40.0
 
 [node name="shotgun" type="Node2D"]
 script = ExtResource("1_5w330")
-projectile = ExtResource("2_c2r4r")
+projectile = ExtResource("2_y2vo4")
 weaponName = &"Shotgun"
 damage = 40
 attackType = "Projectile"
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(59.9716, -6.00647)
+position = Vector2(96, -8)
 scale = Vector2(2.20532, 2.64658)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 2.27374e-13)
-scale = Vector2(4.07483, 3.84491)
-texture = ExtResource("3_7voht")
+[node name="Shotgun" type="Sprite2D" parent="."]
+position = Vector2(48, 1.90735e-06)
+scale = Vector2(0.112087, 0.112087)
+texture = ExtResource("3_rxebh")
 
 [node name="Pick Up Area" type="Area2D" parent="."]
+position = Vector2(40, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pick Up Area"]
+position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_2tb7b")
 
 [connection signal="body_entered" from="Pick Up Area" to="." method="_on_weapon_area_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://0qc5jwl5dmbe"]
+
+[ext_resource type="Script" path="res://scripts/weapons/katana.gd" id="1_b83jo"]
+[ext_resource type="PackedScene" uid="uid://cys8kyisaabuw" path="res://scenes/projectiles/katana_slash.tscn" id="2_bgx8s"]
+[ext_resource type="Texture2D" uid="uid://gk70u2pd5w54" path="res://sprites/katana.png" id="2_w3m0k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ulq3"]
+radius = 72.0
+
+[node name="katana" type="Node2D"]
+script = ExtResource("1_b83jo")
+projectile = ExtResource("2_bgx8s")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(184, 9.09495e-13)
+scale = Vector2(2.20532, 2.64658)
+
+[node name="katana_sprite" type="Sprite2D" parent="."]
+position = Vector2(96, 2.27374e-13)
+rotation = 1.5708
+scale = Vector2(0.225283, 0.225652)
+texture = ExtResource("2_w3m0k")
+
+[node name="Pick Up Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pick Up Area"]
+position = Vector2(88, 0)
+shape = SubResource("CircleShape2D_8ulq3")
+
+[connection signal="body_entered" from="Pick Up Area" to="." method="_on_pick_up_area_body_entered"]
+[connection signal="body_exited" from="Pick Up Area" to="." method="_on_pick_up_area_body_exited"]

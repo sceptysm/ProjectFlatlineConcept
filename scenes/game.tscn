@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://xdjflfnp5c5l"]
+[gd_scene load_steps=12 format=3 uid="uid://xdjflfnp5c5l"]
 
 [ext_resource type="Texture2D" uid="uid://bp5u2ifbhvij5" path="res://sprites/tilemap.png" id="1_j51qk"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_m1jum"]
 [ext_resource type="PackedScene" uid="uid://de8ry6oipbfme" path="res://scenes/player.tscn" id="2_j311m"]
 [ext_resource type="PackedScene" uid="uid://c7g7tga8q1do6" path="res://scenes/enemy.tscn" id="3_0ys5a"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="4_2umlw"]
+[ext_resource type="PackedScene" uid="uid://0qc5jwl5dmbe" path="res://scenes/weapons/katana.tscn" id="4_xk58q"]
 [ext_resource type="PackedScene" uid="uid://cmn2jwvenr7uq" path="res://scenes/hud.tscn" id="6_wq75r"]
 [ext_resource type="PackedScene" uid="uid://c4o1h3j1eb4sy" path="res://scenes/game_over_screen.tscn" id="7_4upqy"]
 [ext_resource type="PackedScene" uid="uid://tup3x0e28lgb" path="res://scenes/weapons/shotgun.tscn" id="8_p0amj"]
@@ -586,9 +587,13 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="katana" parent="." instance=ExtResource("4_xk58q")]
+position = Vector2(-434, -171)
 
 [node name="shotgun" parent="." instance=ExtResource("8_p0amj")]
-position = Vector2(-68, -161)
+position = Vector2(-399, -262)
 
 [connection signal="death" from="player" to="." method="_on_player_death"]
 [connection signal="healthChanged" from="player" to="HUD" method="_on_player_health_changed"]

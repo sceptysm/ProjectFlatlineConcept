@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_53rep"]
 [ext_resource type="Texture2D" uid="uid://c3juo84hrlarr" path="res://sprites/player_placeholder.png" id="2_2jhev"]
-[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/bullet.tscn" id="2_78dwo"]
+[ext_resource type="PackedScene" uid="uid://d0ykgysymanx4" path="res://scenes/projectiles/bullet.tscn" id="2_78dwo"]
 [ext_resource type="Script" path="res://scripts/AI.gd" id="3_l4f0x"]
 [ext_resource type="Script" path="res://scripts/Health.gd" id="5_tn38h"]
 
